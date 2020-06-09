@@ -59,7 +59,7 @@ From Docker hub
 version: "3.8"
 services:
   web:
-    image: erwinfelix/ubuntu-node-server
+    image: erwinfelix/ubuntu-nodejs-server
     environment:
       APP_FOLDER: {appfolder}
     ports:
