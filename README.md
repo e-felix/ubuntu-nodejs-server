@@ -1,6 +1,6 @@
 # BASIC UBUNTU NODEJS DOCKER IMAGE
 
-## Build environment
+## Build image
 
 ```sh
 docker build --build-arg appfolder={appfolder} -t ubuntu-nodejs-server .
@@ -12,10 +12,16 @@ docker build --build-arg appfolder={appfolder} -t ubuntu-nodejs-server .
 
 ## Run container
 
-Run interactively
+Run and launch server
 
 ```sh
 docker run -it --name ubuntu-nodejs-server -v $(pwd):/var/www/ -p 3000:3000 ubuntu-nodejs-server
+```
+
+Run interactively
+
+```sh
+docker run -it --name ubuntu-nodejs-server -v $(pwd):/var/www/ -p 3000:3000 ubuntu-nodejs-server bash
 ```
 
 ## Website URL
