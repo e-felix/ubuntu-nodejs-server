@@ -2,8 +2,7 @@ FROM ubuntu:bionic
 
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-
-ARG appfolder
+ENV APP_FOLDER app
 
 RUN apt-get update
 RUN apt-get install -y sudo wget curl git nano
@@ -17,7 +16,7 @@ EXPOSE 3000
 
 COPY . /var/www/
 
-WORKDIR /var/www/$appfolder
+WORKDIR /var/www/${APP_FOLDER}
 
 RUN npm install
 

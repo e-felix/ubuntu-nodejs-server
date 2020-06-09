@@ -3,7 +3,7 @@
 ## Build image
 
 ```sh
-docker build --build-arg appfolder={appfolder} -t ubuntu-nodejs-server .
+docker build --build-arg -t ubuntu-nodejs-server .
 ```
 
 ### Arguments
@@ -32,20 +32,42 @@ http://localhost:3000
 
 ## Docker Compose usage
 
+
+From Dockerfile
+
 ```yaml
 version: "3.8"
 services:
   web:
     build:
       context: .
-      args:
-        appfolder: {appfolder}
-  ports:
-    - "3000:3000"
-  volumes:
-    - .:/var/www/
+    environment:
+      APP_FOLDER: {appfolder}
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/
 
-  # optional if you want an intereactive login shell
-  stdin_open: true
-  tty: true
+    # optional if you want an intereactive login shell
+    stdin_open: true
+    tty: true
+```
+
+From Docker hub
+
+```yaml
+version: "3.8"
+services:
+  web:
+    image: erwinfelix/ubuntu-node-server
+    environment:
+      APP_FOLDER: {appfolder}
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/
+
+    # optional if you want an intereactive login shell
+    stdin_open: true
+    tty: true
 ```
